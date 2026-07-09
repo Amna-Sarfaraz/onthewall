@@ -20,4 +20,4 @@ Plain HTML, CSS, and Google Fonts (Fraunces + Inter). No frameworks, no build st
 Open `index.html` directly in a browser, or use VS Code's Live Server extension for auto-reload while editing.
 
 ## Live site
-[onthewall.vercel.app](https://onthewall.vercel.app) *(update once deployed)*
+https://onthewall-snowy.vercel.app/
