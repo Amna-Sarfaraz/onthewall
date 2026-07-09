@@ -1,0 +1,290 @@
+/* Color + font tokens */
+:root{
+  --base:      #faf6ef;
+  --pacific:   #729ea1;
+  --sage:      #b5bd89;
+  --tan:       #dfbe99;
+  --coral:     #ec9192;
+  --rose:      #db5375;
+  --ink:       #2f2b28;
+  --muted:     #7c7468;
+  --frame:     #4a4640;
+
+  --display: 'Fraunces', Georgia, serif;
+  --body:    'Inter', system-ui, sans-serif;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  color: var(--ink);
+  font-family: var(--body);
+  line-height:1.55;
+  /* faint plaster texture behind the whole site — repeats a soft diagonal stripe */
+  background-color: var(--base);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(114,158,161,0.035) 0px,
+    rgba(114,158,161,0.035) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+}
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ font-family: var(--display); font-weight:500; margin:0; }
+
+.eyebrow{
+  font-size:0.72rem;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color: var(--rose);
+}
+
+/* HEADER — flex row */
+header.site{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  padding:22px 6vw;
+  position:sticky;
+  top:0;
+  background: rgba(250,246,239,0.9);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(114,158,161,0.25);
+  z-index:10;
+}
+header.site .mark{
+  font-size:1.35rem;
+  color:var(--pacific);
+}
+
+header.site nav{ display:flex; gap:28px; }
+header.site nav a{
+  font-size:0.82rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--ink);
+  opacity:0.75;
+  border-bottom:2px solid transparent;
+  padding-bottom:2px;
+  transition:opacity .2s, border-color .2s;
+}
+header.site nav a:hover{ opacity:1; border-color:var(--rose); }
+/* marks whichever page you're currently on — add class="active" in the HTML */
+header.site nav a.active{ opacity:1; border-color:var(--rose); color:var(--rose); }
+
+/* HERO — anchor for the absolute badge */
+.hero{
+  position:relative;
+  padding:70px 5vw 60px;
+  max-width:760px;
+  margin:0 auto;
+  text-align:center;
+}
+.hero .eyebrow{ margin-bottom:14px; }
+.hero h1{
+  font-size:clamp(2.1rem, 5vw, 3.4rem);
+  line-height:1.1;
+  color:var(--ink);
+}
+.hero p{
+  margin-top:20px;
+  max-width:46ch;
+  margin-left:auto;
+  margin-right:auto;
+  color:var(--muted);
+}
+
+/* Positioned relative to .hero, not the page */
+.hero .catalog-badge{
+  position:absolute;
+  top:38px;
+  right:6vw;
+  text-align:right;
+  padding:10px 16px;
+  border:1px solid var(--sage);
+  background:var(--tan);
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--frame);
+}
+.hero .catalog-badge strong{ display:block; color:var(--rose); font-size:0.8rem; }
+
+/* Signature element — a thin brass rule with a rose diamond, reused on both pages */
+.divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  max-width:760px;
+  margin:0 auto 44px;
+  padding:0 6vw;
+}
+.divider::before, .divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--sage);
+}
+.divider .diamond{
+  width:7px;
+  height:7px;
+  background:var(--rose);
+  transform:rotate(45deg);
+  flex-shrink:0;
+}
+
+/* GALLERY heading row */
+section.gallery{ padding:20px 6vw 100px; }
+.gallery .section-heading{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  border-bottom:1px solid var(--sage);
+  padding-bottom:14px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.gallery .section-heading h2{ font-size:1.6rem; color:var(--pacific); }
+.gallery .section-heading span{ color:var(--muted); font-size:0.85rem; }
+
+/* Main gallery grid — wraps into rows */
+.wall{
+  display:flex;
+  flex-wrap:wrap;
+  gap:56px 40px;
+}
+
+.exhibit{
+  flex: 1 1 300px;
+  max-width:380px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Frame — anchor for the plaque */
+.frame{
+  position:relative;
+  background:var(--frame);
+  padding:14px;
+  box-shadow: 0 18px 34px rgba(47,43,40,0.2);
+}
+.frame .mat{
+  background:var(--tan);
+  padding:20px;
+}
+.frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+/* Plaque — absolute, overlaps frame's bottom edge */
+.plaque{
+  position:absolute;
+  left:50%;
+  bottom:-18px;
+  transform:translateX(-50%);
+  background:var(--base);
+  color:var(--ink);
+  padding:8px 18px;
+  border:1px solid var(--rose);
+  text-align:center;
+  min-width:75%;
+  box-shadow:0 6px 14px rgba(47,43,40,0.18);
+}
+.plaque .title{ font-family:var(--display); font-size:0.95rem; }
+.plaque .meta{ font-size:0.68rem; letter-spacing:0.04em; color:var(--muted); margin-top:2px; }
+
+.reflection{
+  margin-top:38px;
+  padding-left:16px;
+  border-left:3px solid var(--rose);
+}
+.reflection p{
+  margin:0;
+  font-size:0.94rem;
+  color:var(--ink);
+}
+
+/* link at the bottom of the gallery pointing to the About page */
+.more-link{
+  display:block;
+  text-align:center;
+  margin-top:70px;
+  font-size:0.85rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--rose);
+  border-bottom:1px solid transparent;
+}
+.more-link:hover{ border-color:var(--rose); }
+
+/* ARTIST FILE CARDS — About page, reuses the plaque look for cohesion */
+.artist-files{
+  display:flex;
+  flex-wrap:wrap;
+  gap:28px;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 6vw 90px;
+}
+.artist-file{
+  flex:1 1 200px;
+  max-width:260px;
+  background:var(--tan);
+  border:1px solid var(--sage);
+  padding:18px;
+  text-align:center;
+}
+.artist-file .name{ font-family:var(--display); font-size:1.05rem; color:var(--frame); }
+.artist-file .years{ font-size:0.7rem; letter-spacing:0.05em; color:var(--muted); margin-top:2px; }
+.artist-file p{
+  margin-top:12px;
+  font-size:0.85rem;
+  color:var(--ink);
+}
+
+/* ABOUT — 3-column flex row (visiting / contact info) */
+section.about-info{
+  background:var(--tan);
+  padding:70px 6vw;
+}
+.about-columns{
+  display:flex;
+  flex-wrap:wrap;
+  gap:48px;
+  max-width:1100px;
+  margin:0 auto;
+}
+.about-columns > div{ flex:1 1 220px; }
+.about-columns h3{ font-size:1rem; color:var(--rose); margin-bottom:10px; }
+.about-columns p, .about-columns address{
+  font-style:normal;
+  font-size:0.9rem;
+  color:var(--frame);
+  margin:0;
+}
+
+footer{
+  text-align:center;
+  padding:26px;
+  font-size:0.75rem;
+  letter-spacing:0.04em;
+  color:var(--muted);
+  background:var(--base);
+}
+
+/* Phones: badge no longer absolute (avoids overlap) */
+@media (max-width:640px){
+  header.site{ padding:18px 5vw; }
+  .hero{ padding:70px 5vw 60px; }
+  .hero .catalog-badge{ position:static; margin-top:24px; display:inline-block; }
+  .wall{ gap:64px; }
+  .divider{ padding:0 5vw; }
+}
