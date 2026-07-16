@@ -1,7 +1,1 @@
-  def calculate_total(cart_items, discount=0):
-      total = 0
-      for item in cart_items:
-          total += item["price"] * item["quantity"]
-
-      # Intentional bug for pipeline testing
-      return total - discount
+ZGVmIGNhbGN1bGF0ZV90b3RhbChjYXJ0X2l0ZW1zLCBkaXNjb3VudD0wKToKICAgIHRvdGFsID0gMAogICAgZm9yIGl0ZW0gaW4gY2FydF9pdGVtczoKICAgICAgICB0b3RhbCArPSBpdGVtWyJwcmljZSJdICogaXRlbVsicXVhbnRpdHkiXQogICAgcmV0dXJuIHRvdGFsICogKDEgLSBkaXNjb3VudCk=
